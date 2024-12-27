@@ -1,0 +1,378 @@
+body{
+    background: rgb(157,67,4);
+    background: radial-gradient(circle, rgba(157,67,4,1) 0%, rgba(0,0,0,1) 60%);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+p{
+    font-family: 'Inter';
+}
+
+.header{
+    margin-left: 20px;
+    padding-top: 50px;
+}
+.shoptitle{
+    font-family: 'Wallpoet';
+    font-size: 50px;
+    color: #FFF7B5;
+    margin: 1px;
+}
+
+.shopdesc{
+    font-family: 'Inter';
+    font-size: 20px;
+    color: #E39400;
+    margin: 1px;
+}
+.main{
+    background-color: rgb(255, 255, 255);
+    margin: 15px;
+    margin-top: 80px;
+    min-height: 600px;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    border-radius: 5px;
+    z-index:10;
+}
+.allcircles{
+    position: absolute;
+    margin-top: 30px;
+    width: 100%;
+    height: 406px;
+    display: flex;
+    justify-content: center;
+    z-index:-3;
+}
+.circle1 {
+    position: absolute;
+    background: #E39400;
+    width: 406px;
+    height: 406px;
+    border-radius: 50%;
+    z-index:-3;
+    margin: 0 auto;
+}
+
+.circle2 {
+    position: absolute;
+    background: #FFF7B5;
+    width: 391px;
+    height: 391px;
+    border-radius: 50%;
+    z-index:-2;
+    margin: 7px;
+}
+
+.circle3 {
+    position: absolute;
+    background: rgb(0, 0, 0);
+    width: 386px;
+    height: 386px;
+    border-radius: 50%;
+    z-index:-1;
+    margin: 10px;
+}
+
+.whitezone{
+    width: 100%;
+}
+
+.navbar{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+
+.cornernavbar{
+    width: 30px;
+}
+
+.cornernavbar > a >img{
+    width: 30px;
+    height: 30px;
+    object-fit: scale-down;
+}
+
+
+.catalog{
+    background-color: rgb(0, 0, 0);
+    min-width: 300px;
+    width: 300px;
+    border: 1px solid;
+    border-radius: 5px;
+    border-color: rgb(255, 255, 255);
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 20px;
+
+}
+
+.catalogtitle{
+    font-family: 'Inter';
+    font-size: 30px;
+    color: #ffffff;
+    margin-top: 20px;
+    margin-left: 20px;
+}
+
+ul{
+    list-style-type: none;
+    padding-left: 20px;
+    padding-top: 5px;
+    margin: 0px;
+}
+li{
+    margin-top: 10px;
+}
+a{
+    font-family: 'Inter';
+    font-size: 20px;
+    color: #ffffff;
+    text-decoration: none;
+    margin-left: 0px;
+}
+
+a:hover {
+    color: #E39400;
+}
+
+a:active {
+    color: #E39400;
+}
+
+.categorytitle{
+    font-family: 'Inter';
+    font-size: 30px;
+    color: #000000;
+    margin-top: 20px;
+    margin-left: 20px;
+}
+
+.productlist{
+    display: flex;
+    flex-wrap: wrap;
+    padding: 10px;
+}
+.productlisting{
+    display: flex;
+    flex-direction: column;
+    width: 220px;
+    height: fit-content;
+    padding: 10px;
+}
+
+.productimagelisting > img{
+    width: 200px;
+    height: 200px;
+    object-fit: scale-down;
+}
+
+h3{
+    font-family: 'Inter';
+    color: #152E38;
+    height: 60px;
+    font-size: 20px;
+    font-variant: normal;
+    font-weight: lighter;
+}
+.price{
+    font-family: 'Wallpoet';
+    font-variant: normal;
+    font-weight: lighter;
+    font-size: 30px;
+    color: #E39400;
+    margin: 1px;
+    text-align: right;
+}
+
+.productflex{
+    padding: 20px;
+    padding-top: 0px;
+    display: flex;
+    flex-direction: row;
+}
+
+.productimage > img{
+    width: 400px;
+    height: 400px;
+    object-fit: scale-down;
+}
+
+.productinfo{
+    display: flex;
+    flex-direction: column;
+    
+}
+.productinfo > .price{
+    text-align: left;
+}
+#addtocartform{
+    display: inline;
+}
+.btntocart{
+    display: inline;
+    font-family: 'Inter';
+    font-weight:bold;
+    background-color: #000000;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    transition-duration: 0.1s;
+}
+
+.btntocart:hover {
+    background-color: #E39400;
+  }
+
+.btntocart:active  {
+    background-color: #b86200;
+  }
+
+.itemquantity{
+    margin: 20px;
+    text-align: right;
+}
+
+.quantity{
+    display: flex;
+    flex-direction: row;
+    margin-left: auto;
+}
+
+.productimagecart > img{
+    width: 150px;
+    height: 150px;
+    object-fit: scale-down;
+}
+
+.sum{
+    margin-left: auto;
+    margin-top: 20px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    text-align: right;
+}
+
+h2{
+    font-family: 'Inter';
+    font-size: 30px;
+    color: #000000;
+}
+
+.sum > .price {
+    font-size: 50px;
+}
+
+.userinfo{
+    display: flex;
+    flex-direction: row;
+    margin: 20px;
+}
+.usertext{
+    display: flex;
+    flex-direction: column;
+}
+
+.userbuttons{
+    display: flex;
+    flex-direction: column;
+    margin-left: auto;
+    text-align: right;
+}
+
+.userbuttons > a{
+    color:#000000;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+.userbuttons > a:hover{
+    color:#E39400;
+}
+
+h4{
+    font-family: 'Inter';
+    font-size: 20px;
+    color: #000000;
+    margin: 10px;
+    margin-left: 20px;
+}
+
+.login{
+    
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
+    align-items: center;
+}
+
+.login > *{
+    font-family: 'Inter';
+    margin: 5px;
+    width: 50%;
+}
+
+.logintitle{
+    text-align: center;
+}
+
+.login > a{
+    color:#000000;
+    font-size: 15px;
+    margin-bottom: 10px;
+}
+.login > a:hover{
+    color:#E39400;
+}
+label{
+    font-family: 'Inter';
+}
+
+.helptext{
+    color:#646464;
+    font-size: 15px;
+    text-align: left;
+}
+
+.ordering > p > label{
+    visibility: hidden;
+    font-size: 0px;
+}
+
+.ordering > p{
+    display: flex;
+    flex-direction: column;
+}
+
+.ordering{
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
+}
+.conf{
+    margin: 20px;
+}
+
+strong{
+    font-family: 'Inter';
+}
+
+.table{
+    margin: 20px;
+    margin-left: auto;
+}
+
+table{
+    width: 100px;
+}
+td{
+    margin-left: auto;
+}
+

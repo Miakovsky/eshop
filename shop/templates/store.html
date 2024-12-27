@@ -1,0 +1,22 @@
+{% extends 'main.html' %}
+{% load static %}    
+<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+{% block content %}
+
+    <div class="catalog">
+        <h2 class="catalogtitle">Каталог товаров</h2>
+        <ul>
+            {% for category in categories %}
+            <li>
+                <a href="{% url 'product_list_by_category' category.slug %}">{{category.name}}</a>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div class="whitezone">
+        {% block whitezone %}
+        {% endblock whitezone %}
+    </div>
+
+
+{% endblock content %}

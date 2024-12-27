@@ -1,0 +1,70 @@
+{% extends 'store.html' %}
+{% load static %} 
+<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+{% block whitezone %}
+<div class="navbar">
+    <a href="{{ request.META.HTTP_REFERER }}"><h2 class="categorytitle">Назад</h2></a>
+
+    <div class="table">
+        <table >
+            <tr>
+                <td class="cornernavbar">
+                    <a href="{% url 'cart_detail' %}"><img src="{% static 'images/cart.png'%}" alt="Корзина"></a>
+                </td>
+                <td class="cornernavbar">
+                    <a href="{% url 'get_user' %}"><img src="{% static 'images/profile.png'%}" alt="Профиль"></a>
+                </td>
+            </tr>
+        </table>
+    </div>    
+</div>
+<div class="productflex">
+    <div class="productimage">
+        {% if product.image %}
+            <img src="{% static 'images/products/'%}{{product.slug}}.jpg" alt="{{product.name}}">
+        {% else %}
+            <img src="{% static 'images/placeholder.jpg' %}" alt="{{product.name}}">
+        {% endif %}
+    </div>
+    
+    <div class="productinfo">
+        <h3>{{product.name}}</h3>
+        <h3 class="price">{{product.price}} ₽</h3>
+        <form action="{% url 'cart_add' product.id %}" method="post" id="addtocartform">
+            {% csrf_token %}
+            <button type="submit" class="btntocart">В КОРЗИНУ</button>
+            <p id="message"></p>
+        </form>
+        <p>{{product.characteristics}}</p>
+        <p>{{product.description}}</p>
+    </div>
+</div>
+<script>
+    document.getElementById('addtocartform').addEventListener("submit", function(event){
+        event.preventDefault();
+
+        const form = event.target;
+        const url = form.action;
+        const formData = new FormData(form);
+
+        fetch(url, {
+            method:'POST',
+            headers:{'X-CSRFToken':formData.get('csrfmiddlewaretoken')},
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data=>{
+            const messageElement = document.getElementById('message')
+            if(data.success){
+                messageElement.textContent = data.message;
+            }else{
+                messageElement.textContent = 'FAILED';
+            }
+        })
+        .catch(error=>{
+            console.error('Error', error)
+        })
+    })
+</script>
+{% endblock %}
+

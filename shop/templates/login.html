@@ -1,0 +1,34 @@
+{% extends 'store.html' %}
+{% load static %} 
+<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+{% block whitezone %}
+<div class="navbar">
+    <a href="{{ request.META.HTTP_REFERER }}"><h2 class="categorytitle">Назад</h2></a>
+
+    <div class="table">
+        <table >
+            <tr>
+                <td class="cornernavbar">
+                    <a href="{% url 'cart_detail' %}"><img src="{% static 'images/cart.png'%}" alt="Корзина"></a>
+                </td>
+                <td class="cornernavbar">
+                    <a href="{% url 'get_user' %}"><img src="{% static 'images/profile.png'%}" alt="Профиль"></a>
+                </td>
+            </tr>
+        </table>
+    </div>    
+</div>
+<div>
+    
+    <form action="{% url 'login' %}" method="post" class="login">
+        {% csrf_token %}
+        <h2 class="logintitle">ВХОД</h2>
+        <p>Имя пользователя</p>
+        <input type="text" name="username">
+        <p>Пароль</p>
+        <input type="password" name="password">
+        <button type="submit" class="btntocart">ВОЙТИ</button>
+        <a href="{% url 'register' %}">Нет аккаунта?</a>
+    </form>
+</div>
+{% endblock whitezone %}

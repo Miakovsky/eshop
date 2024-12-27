@@ -1,0 +1,29 @@
+{% extends 'store.html' %}
+{% load static %} 
+<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+{% block whitezone %}
+<div class="navbar">
+    <a href="{{ request.META.HTTP_REFERER }}"><h2 class="categorytitle">Назад</h2></a>
+
+    <div class="table">
+        <table >
+            <tr>
+                <td class="cornernavbar">
+                    <a href="{% url 'cart_detail' %}"><img src="{% static 'images/cart.png'%}" alt="Корзина"></a>
+                </td>
+                <td class="cornernavbar">
+                    <a href="{% url 'get_user' %}"><img src="{% static 'images/profile.png'%}" alt="Профиль"></a>
+                </td>
+            </tr>
+        </table>
+    </div>    
+</div>
+<div>
+    <form method="post" action="{% url 'order_create' %}" class="ordering">
+        {% csrf_token %}
+        <p>Адрес магазина</p>
+        {{form.as_p}}
+        <button type="submit" class="btntocart">ОФОРМИТЬ ЗАКАЗ</button>
+    </form>
+</div>
+{% endblock whitezone %}

@@ -1,0 +1,64 @@
+{% extends 'store.html' %}
+{% load static %} 
+<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+{% block whitezone %}
+<div class="navbar">
+    <a href="{{ request.META.HTTP_REFERER }}"><h2 class="categorytitle">Назад</h2></a>
+
+    <div class="table">
+        <table >
+            <tr>
+                <td class="cornernavbar">
+                    <a href="{% url 'cart_detail' %}"><img src="{% static 'images/cart.png'%}" alt="Корзина"></a>
+                </td>
+                <td class="cornernavbar">
+                    <a href="{% url 'get_user' %}"><img src="{% static 'images/profile.png'%}" alt="Профиль"></a>
+                </td>
+            </tr>
+        </table>
+    </div>    
+</div>
+<div class="cartflex">
+    {% if cart %}
+        <ul>
+            {% for item in cart.items.all %}
+            <li class="productflex">
+                <div class="productimagecart">
+                    {% if item.product.image %}
+                        <img src="{% static 'images/products/'%}{{item.product.slug}}.jpg" alt="{{item.product.name}}">
+                    {% else %}
+                        <img src="{% static 'images/placeholder.jpg' %}" alt="{{item.product.name}}">
+                    {% endif %}
+                </div>
+                <div class="productinfo">
+                    <h3>{{item.product.name}}</h3>
+                    <h3 class="price">{{item.product.price}} ₽</h3>
+                </div>
+                <div class="quantity">
+                    <form action="{% url 'remove' item.id %}" method="post" id="checkout">
+                        {% csrf_token %}
+                        <button type="submit" class="btntocart">-</button>
+                    </form>
+                    <h3 class="itemquantity">{{item.quantity}}</h3>
+                    <form action="{% url 'increase' item.id %}" method="post" id="checkout">
+                        {% csrf_token %}
+                        <button type="submit" class="btntocart">+</button>
+                    </form>
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
+        
+        <div class="sum">
+            <h2>Сумма:</h2>
+            <h3 class="price">{{cart.get_total_price}}</h3>
+            <form action="{% url 'order_create' %}" method="post" id="checkout">
+                {% csrf_token %}
+                <button type="submit" class="btntocart">ПЕРЕЙТИ К ОФОРМЛЕНИЮ ЗАКАЗА</button>
+            </form>
+        </div>
+    {% else %}
+    <h2 class="categorytitle">Корзина пуста</h2>
+    {% endif %}
+</div>
+{% endblock whitezone %}

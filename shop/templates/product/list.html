@@ -1,0 +1,48 @@
+{% extends 'store.html' %}
+{% load static %} 
+<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+{% block whitezone %}
+<div class="navbar">
+    {% if category %}
+    <h2 class="categorytitle">{{category.name}}</h2>
+    {% else %}
+    <h2 class="categorytitle">Все товары</h2>
+    {% endif %}
+    <div class="table">
+        <table >
+            <tr>
+                <td class="cornernavbar">
+                    <a href="{% url 'cart_detail' %}"><img src="{% static 'images/cart.png'%}" alt="Корзина"></a>
+                </td>
+                <td class="cornernavbar">
+                    <a href="{% url 'get_user' %}"><img src="{% static 'images/profile.png'%}" alt="Профиль"></a>
+                </td>
+            </tr>
+        </table>
+    </div>    
+</div>
+<div class="productlist">
+    {% for product in products %}
+    
+        <div class="productlisting">
+            <a href="{% url 'product_detail' product.id product.slug %}">
+                <div>
+                    <div class="productimagelisting">
+                        {% if product.image %}
+                            <img src="{% static 'images/products/'%}{{product.slug}}.jpg" alt="{{product.name}}">
+                        {% else %}
+                            <img src="{% static 'images/placeholder.jpg' %}" alt="{{product.name}}">
+                        {% endif %}
+                    </div>
+                    <h3>{{product.name}}</h3>
+            <h3 class="price">{{product.price}} ₽</h3>
+                </div>
+            </a>
+            
+           
+            
+        </div>
+    
+    {% endfor %}
+</div>
+{% endblock whitezone %}

@@ -1,0 +1,41 @@
+{% extends 'store.html' %}
+{% load static %} 
+<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+{% block whitezone %}
+<div class="navbar">
+    <a href="{{ request.META.HTTP_REFERER }}"><h2 class="categorytitle">Назад</h2></a>
+
+    <div class="table">
+        <table >
+            <tr>
+                <td class="cornernavbar">
+                    <a href="{% url 'cart_detail' %}"><img src="{% static 'images/cart.png'%}" alt="Корзина"></a>
+                </td>
+                <td class="cornernavbar">
+                    <a href="{% url 'get_user' %}"><img src="{% static 'images/profile.png'%}" alt="Профиль"></a>
+                </td>
+            </tr>
+        </table>
+    </div>    
+</div>
+<div>
+    <h2 class="categorytitle">Прошлые заказы</h2>
+    <div class="orderhistory">
+        {% for order in user_orders  %}
+        <hr>
+        <h4 >Заказ {{order.id}}</h4>
+
+        <ul>
+            {% for item in user_order_items  %}
+                {% if item.order == order %}
+                <li>
+                    <p>{{item.quantity}} x {{item.product.name}} = {{item.price}}</p>
+                </li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+    {% endfor %}
+    </div>
+    
+</div>
+{% endblock whitezone %}
